@@ -141,7 +141,14 @@ qstringSplit(const QString& string,
              Qt::SplitBehaviorFlags behavior,
              Qt::CaseSensitivity cs)
 {
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 14, 0))
   return string.split(sep, behavior, cs);
+#else
+  return string.split(sep,
+                      behavior == Qt::SkipEmptyParts ? QString::SkipEmptyParts
+                                                     : QString::KeepEmptyParts,
+                      cs);
+#endif
 }
 
 QString

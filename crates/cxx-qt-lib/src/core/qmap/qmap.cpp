@@ -5,6 +5,7 @@
 //
 // SPDX-License-Identifier: MIT OR Apache-2.0
 #include "cxx-qt-lib/qmap.h"
+#include "cxx-qt-lib/core/qt5compat.h"
 
 #include <cxx-qt-lib/assertion_utils.h>
 
@@ -18,7 +19,7 @@
   static_assert(                                                               \
     !::std::is_trivially_destructible<QMap_##combinedName>::value);            \
                                                                                \
-  static_assert(QTypeInfo<QMap_##combinedName>::isRelocatable);                \
+  static_assert(::rust::cxxqtlib1::isRelocatableOrOldQt<QMap_##combinedName>);\
                                                                                \
   static_assert(::std::is_copy_assignable<keyTypeName>::value);                \
   static_assert(::std::is_copy_constructible<keyTypeName>::value);             \

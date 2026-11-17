@@ -5,6 +5,7 @@
 //
 // SPDX-License-Identifier: MIT OR Apache-2.0
 #include "cxx-qt-lib/qjsonobject.h"
+#include "cxx-qt-lib/core/qt5compat.h"
 
 #include <cxx-qt-lib/assertion_utils.h>
 
@@ -28,7 +29,7 @@ static_assert(!::std::is_trivially_copy_constructible<QJsonObject>::value);
 
 static_assert(!::std::is_trivially_destructible<QJsonObject>::value);
 
-static_assert(QTypeInfo<QJsonObject>::isRelocatable);
+static_assert(::rust::cxxqtlib1::isRelocatableOrOldQt<QJsonObject>);
 
 namespace rust {
 namespace cxxqtlib1 {

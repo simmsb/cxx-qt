@@ -10,6 +10,9 @@
 #include <QtCore/QDebug>
 #include <QtCore/QString>
 #include <cinttypes>
+#include <memory>
+
+#include "cxx-qt-lib/core/qt5compat.h"
 
 namespace rust {
 namespace cxxqtlib1 {

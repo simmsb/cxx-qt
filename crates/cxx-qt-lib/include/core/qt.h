@@ -7,3 +7,5 @@
 #pragma once
 
 #include <QtCore/Qt>
+
+#include "cxx-qt-lib/core/qt5compat.h"

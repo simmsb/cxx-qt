@@ -10,6 +10,8 @@
 
 #include <QtCore/QByteArray>
 
+#include "cxx-qt-lib/core/qt5compat.h"
+
 #include "rust/cxx.h"
 
 // Define namespace otherwise we hit a GCC bug
@@ -21,7 +23,8 @@ struct IsRelocatable<QByteArray> : ::std::true_type
 {};
 
 template<>
-struct IsRelocatable<QByteArray::FromBase64Result> : ::std::true_type
+struct IsRelocatable<::rust::cxxqtlib1::QByteArrayFromBase64Result>
+  : ::std::true_type
 {};
 
 } // namespace rust
@@ -31,8 +34,6 @@ namespace cxxqtlib1 {
 
 using QByteArrayBase64Option = QByteArray::Base64Option;
 using QByteArrayBase64Options = QByteArray::Base64Options;
-using QByteArrayBase64DecodingStatus = QByteArray::Base64DecodingStatus;
-using QByteArrayFromBase64Result = QByteArray::FromBase64Result;
 
 QByteArray
 qbytearrayFromSliceU8(::rust::Slice<const ::std::uint8_t> slice);
@@ -50,7 +51,7 @@ void
 qbytearrayAppend(QByteArray& byteArray, ::std::uint8_t ch);
 void
 qbytearrayFill(QByteArray& byteArray, ::std::uint8_t ch, ::rust::isize size);
-QByteArray::FromBase64Result
+QByteArrayFromBase64Result
 qbytearrayFromBase64Encoding(const QByteArray& base64,
                              QByteArray::Base64Options options);
 void

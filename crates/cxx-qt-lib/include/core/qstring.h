@@ -10,6 +10,8 @@
 #include <QtCore/QByteArray>
 #include <QtCore/QStringList>
 
+#include "cxx-qt-lib/core/qt5compat.h"
+
 #include "rust/cxx.h"
 
 // Define namespace otherwise we hit a GCC bug

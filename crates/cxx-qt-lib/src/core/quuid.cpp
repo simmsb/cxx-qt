@@ -55,7 +55,11 @@ quuidToString(const QUuid& uuid)
 QUuid
 quuidFromString(const QString& string)
 {
+#if QT_VERSION >= QT_VERSION_CHECK(5, 10, 0)
   return QUuid::fromString(string);
+#else
+  return QUuid(string);
+#endif
 }
 
 QUuid
@@ -63,8 +67,10 @@ quuidFromStr(rust::Str string)
 {
 #if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
   return QUuid::fromString(QAnyStringView(string.data(), string.length()));
-#else
+#elif QT_VERSION >= QT_VERSION_CHECK(5, 10, 0)
   return QUuid::fromString(QString::fromLatin1(string.data(), string.length()));
+#else
+  return QUuid(QString::fromLatin1(string.data(), string.length()));
 #endif
 }
 
