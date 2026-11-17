@@ -88,7 +88,6 @@ mod ffi {
         QVector4D = 84,
         QQuaternion = 85,
         QPolygonF = 86,
-        QColorSpace = 87,
 
         // Widget types
         QSizePolicy = 121,

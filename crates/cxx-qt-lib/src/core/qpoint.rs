@@ -48,8 +48,6 @@ mod ffi {
         #[rust_name = "to_pointf"]
         fn toPointF(self: &QPoint) -> QPointF;
 
-        /// Returns a point with x and y coordinates exchanged.
-        fn transposed(self: &QPoint) -> QPoint;
 
         /// Returns the x coordinate of this point.
         fn x(self: &QPoint) -> i32;

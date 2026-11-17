@@ -48,8 +48,6 @@ mod ffi {
         /// Returns the y-coordinate of the line's end point.
         fn y2(self: &QLineF) -> f64;
 
-        /// Returns the center point of this line. This is equivalent to `(self.p1() + self.p2()) / 2`, except it will never overflow.
-        fn center(self: &QLineF) -> QPointF;
 
         /// Returns the horizontal component of the line's vector.
         fn dx(self: &QLineF) -> f64;

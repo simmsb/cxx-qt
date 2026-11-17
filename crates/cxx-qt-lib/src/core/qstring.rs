@@ -53,9 +53,6 @@ mod ffi {
         #[rust_name = "is_empty"]
         fn isEmpty(self: &QString) -> bool;
 
-        /// Returns `true` if the string is lowercase, that is, it's identical to its [`to_lower`](Self::to_lower) folding.
-        #[rust_name = "is_lower"]
-        fn isLower(self: &QString) -> bool;
 
         /// Returns `true` if this string is null; otherwise returns `false`.
         #[rust_name = "is_null"]
@@ -65,13 +62,7 @@ mod ffi {
         #[rust_name = "is_right_to_left"]
         fn isRightToLeft(self: &QString) -> bool;
 
-        /// Returns `true` if the string is uppercase, that is, it's identical to its [`to_upper`](Self::to_upper) folding.
-        #[rust_name = "is_upper"]
-        fn isUpper(self: &QString) -> bool;
 
-        /// Returns `true` if the string contains valid UTF-16 encoded data, or `false` otherwise.
-        #[rust_name = "is_valid_utf16"]
-        fn isValidUtf16(self: &QString) -> bool;
 
         /// Prepends the string `str` to the beginning of this string and returns a mutable reference to this string.
         fn prepend<'a>(self: &'a mut QString, str: &QString) -> &'a mut QString;

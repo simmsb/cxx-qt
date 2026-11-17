@@ -54,20 +54,12 @@ mod ffi {
         #[rust_name = "current_msecs_since_epoch_qint64"]
         fn currentMSecsSinceEpoch() -> qint64;
 
-        #[doc(hidden)]
-        #[Self = "QDateTime"]
-        #[rust_name = "current_secs_since_epoch_qint64"]
-        fn currentSecsSinceEpoch() -> qint64;
 
         #[doc(hidden)]
         #[Self = "QDateTime"]
         #[rust_name = "from_msecs_since_epoch_qint64"]
         fn fromMSecsSinceEpoch(msecs: qint64, time_zone: &QTimeZone) -> QDateTime;
 
-        #[doc(hidden)]
-        #[Self = "QDateTime"]
-        #[rust_name = "from_secs_since_epoch_qint64"]
-        fn fromSecsSinceEpoch(secs: qint64, time_zone: &QTimeZone) -> QDateTime;
 
         #[doc(hidden)]
         #[rust_name = "add_days_qint64"]
@@ -137,9 +129,6 @@ mod ffi {
         #[rust_name = "set_offset_from_utc"]
         fn setOffsetFromUtc(self: &mut QDateTime, offset_seconds: i32);
 
-        #[doc(hidden)]
-        #[rust_name = "set_secs_since_epoch_qint64"]
-        fn setSecsSinceEpoch(self: &mut QDateTime, secs: qint64);
 
         /// Sets the time specification used in this datetime to `spec`. The datetime will refer to a different point in time.
         ///
@@ -177,9 +166,6 @@ mod ffi {
         #[rust_name = "to_offset_from_utc"]
         fn toOffsetFromUtc(self: &QDateTime, offset_seconds: i32) -> QDateTime;
 
-        #[doc(hidden)]
-        #[rust_name = "to_secs_since_epoch_qint64"]
-        fn toSecsSinceEpoch(self: &QDateTime) -> qint64;
 
         /// Returns the time as a string in the `format` given.
         #[rust_name = "format_enum"]
@@ -282,25 +268,11 @@ impl QDateTime {
         Self::current_msecs_since_epoch_qint64().into()
     }
 
-    /// Returns the number of seconds since the start, in UTC, of the year 1970.
-    ///
-    /// This number is like the POSIX `time_t` variable.
-    pub fn current_secs_since_epoch() -> i64 {
-        Self::current_secs_since_epoch_qint64().into()
-    }
-
     /// Returns a datetime representing a moment the given number `msecs` of milliseconds after the start, in UTC, of the year 1970, described as specified by `time_zone`.
     ///
     /// Note that there are possible values for `msecs` that lie outside the valid range of `QDateTime`, both negative and positive. The behavior of this function is undefined for those values.
     pub fn from_msecs_since_epoch(msecs: i64, time_zone: &QTimeZone) -> QDateTime {
         Self::from_msecs_since_epoch_qint64(msecs.into(), time_zone)
-    }
-
-    /// Returns a datetime representing a moment the given number `secs` of seconds after the start, in UTC, of the year 1970, described as specified by `time_zone`.
-    ///
-    /// Note that there are possible values for `secs` that lie outside the valid range of `QDateTime`, both negative and positive. The behavior of this function is undefined for those values.
-    pub fn from_secs_since_epoch(secs: i64, time_zone: &QTimeZone) -> QDateTime {
-        Self::from_secs_since_epoch_qint64(secs.into(), time_zone)
     }
 
     /// Sets the time zone used in this datetime to `time_zone`.
@@ -413,13 +385,6 @@ impl QDateTime {
         self.set_msecs_since_epoch_qint64(msecs.into());
     }
 
-    /// Sets the datetime to represent a moment a given number, `secs`, of seconds after the start, in UTC, of the year 1970.
-    ///
-    /// On systems that do not support time zones, this function will behave as if local time were UTC.
-    pub fn set_secs_since_epoch(self: &mut QDateTime, secs: i64) {
-        self.set_secs_since_epoch_qint64(secs.into());
-    }
-
     /// Sets the time part of this datetime to `time`. If `time` is not valid, this function sets it to midnight.
     /// Therefore, it's possible to clear any set time in a `QDateTime` by setting it to [`QTime::default()`].
     pub fn set_time(&mut self, time: QTime) {
@@ -440,14 +405,6 @@ impl QDateTime {
         self.to_msecs_since_epoch_qint64().into()
     }
 
-    /// Returns the datetime as a number of seconds after the start, in UTC, of the year 1970.
-    ///
-    /// On systems that do not support time zones, this function will behave as if local time were UTC.
-    ///
-    /// The behavior for this function is undefined if the datetime stored in this object is not valid. However, for all valid dates, this function returns a unique value.
-    pub fn to_secs_since_epoch(self: &QDateTime) -> i64 {
-        self.to_secs_since_epoch_qint64().into()
-    }
 }
 
 impl Clone for QDateTime {

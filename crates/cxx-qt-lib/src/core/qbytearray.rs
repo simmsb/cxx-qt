@@ -51,15 +51,9 @@ mod ffi {
         /// Returns `true` if the byte array has size 0; otherwise returns `false`.
         #[rust_name = "is_empty"]
         fn isEmpty(&self) -> bool;
-        /// Returns `true` if this byte array is lowercase, that is, if it's identical to its [`to_lower`](Self::to_lower) folding.
-        #[rust_name = "is_lower"]
-        fn isLower(&self) -> bool;
         /// Returns `true` if this byte array is null; otherwise returns `false`.
         #[rust_name = "is_null"]
         fn isNull(&self) -> bool;
-        /// Returns `true` if this byte array is uppercase, that is, if it's identical to its [`to_upper`](Self::to_upper) folding.
-        #[rust_name = "is_upper"]
-        fn isUpper(&self) -> bool;
         /// Releases any memory not required to store the array's data.
         fn squeeze(&mut self);
         /// Returns a copy of the byte array, encoded using the options `options`.
